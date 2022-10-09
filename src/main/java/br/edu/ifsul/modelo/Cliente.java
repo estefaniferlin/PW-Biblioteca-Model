@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -30,7 +31,7 @@ public class Cliente {
     @NotBlank(message = "O nome deve ser informado!")
     @Length(max = 80, message = "O nome não pode ter mais que {max} caracteres")
     @Column(name = "nome", nullable = false, length = 80) 
-    private Integer nome;
+    private String nome;
     
     @NotBlank(message = "O CPF deve ser informado!") 
     @Length(max = 11, min = 11, message = "O CPF deve ter {max} caracteres!")
@@ -48,7 +49,7 @@ public class Cliente {
     private String email;
     
     @Temporal(TemporalType.DATE)
-    @NotBlank(message = "A data de cadastro deve ser informada!")
+    @NotNull(message = "A data de cadastro deve ser informada!")
     @Column(name = "dtcadastro", nullable = false)
     private Calendar dtCadastro = Calendar.getInstance();
     
@@ -64,11 +65,11 @@ public class Cliente {
         this.id = id;
     }
 
-    public Integer getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(Integer nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

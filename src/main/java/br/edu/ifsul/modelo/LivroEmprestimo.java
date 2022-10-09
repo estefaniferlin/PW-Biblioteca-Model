@@ -11,11 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author estef
  */
+
 @Entity
 @Table(name = "livroemprestimo")
 class LivroEmprestimo implements Serializable{
@@ -25,7 +27,7 @@ class LivroEmprestimo implements Serializable{
     @GeneratedValue(generator = "seq_livroemprestimo", strategy = GenerationType.SEQUENCE)
     private Integer id;
     
-    @NotBlank(message = "O emprestimo deve ser informado!")
+    @NotNull(message = "O emprestimo deve ser informado!")
     @ManyToOne
     @JoinColumn(name = "emprestimo", referencedColumnName = "id", nullable = false)
     private Emprestimo emprestimo;

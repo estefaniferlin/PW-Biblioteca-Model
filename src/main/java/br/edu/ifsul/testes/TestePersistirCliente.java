@@ -1,8 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package br.edu.ifsul.testes;
 
-import br.edu.ifsul.modelo.Autor;
-import br.edu.ifsul.modelo.Categoria;
-import br.edu.ifsul.modelo.Livro;
+import br.edu.ifsul.modelo.Cliente;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,27 +13,25 @@ import javax.persistence.Persistence;
  *
  * @author estef
  */
-public class TestePersistirLivro {
-    
+public class TestePersistirCliente {
+
     public static void main(String[] args) {
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PW-Biblioteca-ModelPU");
         EntityManager em = emf.createEntityManager();
         
-        Livro l = new Livro();
-        Categoria c = em.find(Categoria.class, 11);
-        Autor a = em.find(Autor.class, 14);
-       
-        l.setTitulo("É assim que começa");
-        l.setCategoria(c);
-        l.setAutor(a);
+        Cliente c = new Cliente();
+        // id é gerado pela sequence
+        c.setNome("Misael");
+        c.setCpf("2014574120");
+        c.setEmail("misael@teste");
+        c.setTelefone("54984775478");
         
         em.getTransaction().begin();
-        em.persist(l);  // persiste o livro criado
+        em.persist(c);  // persiste a categoria criada
         em.getTransaction().commit();
         em.close();
         emf.close();
-        
     }
     
 }

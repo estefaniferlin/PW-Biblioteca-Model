@@ -1,4 +1,4 @@
-br\edu\ifsul\testes\Cliente.class
+br\edu\ifsul\testes\TestePersistirCliente.class
 br\edu\ifsul\modelo\LivroEmprestimo.class
 br\edu\ifsul\modelo\Emprestimo.class
 br\edu\ifsul\modelo\Livro.class

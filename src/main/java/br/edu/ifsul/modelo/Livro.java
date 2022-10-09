@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -33,22 +34,19 @@ public class Livro implements Serializable{
     private String titulo;
     
     @NotBlank(message = "A quantidade deve ser informada!")
-    @Column(name = "quantidade", nullable = false, columnDefinition = "Integer")
-    private Integer quantidade;
-    
-    @NotBlank(message = "O autor deve ser informado!")
+    @Length(max = 80, message = "A quantidade não pode ter mais que {max} caracteres")
+    @Column(name = "quantidade", nullable = false) 
+    private String quantidade;
+       
+    @NotNull(message = "O autor deve ser informado!")
     @ManyToOne
     @JoinColumn(name = "autor", referencedColumnName = "id", nullable = false)
     private Autor autor;
     
-    @NotBlank(message = "A categoria deve ser informada!")
+    @NotNull(message = "A categoria deve ser informada!")
     @ManyToOne
     @JoinColumn(name = "categoria", referencedColumnName = "id", nullable = false)
     private Categoria categoria;
-    
-    @ManyToOne
-    @JoinColumn(name = "emprestimo", referencedColumnName = "id", nullable = true)
-    private Emprestimo emprestimo;
     
     public Livro(){
         
@@ -68,14 +66,6 @@ public class Livro implements Serializable{
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
 
     public Autor getAutor() {
@@ -100,14 +90,6 @@ public class Livro implements Serializable{
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
-    public Emprestimo getEmprestimo() {
-        return emprestimo;
-    }
-
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
-    }
     
     @Override
     public boolean equals(Object obj) {
@@ -126,5 +108,13 @@ public class Livro implements Serializable{
         }
         return true;
     } 
+
+    public String getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
+    }
   
 }

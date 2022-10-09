@@ -1,3 +1,4 @@
+
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
@@ -18,12 +19,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author estef
  */
+
 @Entity
 @Table(name = "emprestimo")
 public class Emprestimo implements Serializable{
@@ -35,8 +38,8 @@ public class Emprestimo implements Serializable{
     
     @Temporal(TemporalType.DATE)
     @NotNull(message = "A data do empréstimo deve ser informada!")
-    @Column(name = "data", nullable = false)
-    private Calendar data;
+    @Column(name = "dtemprestimo", nullable = false)
+    private Calendar dtEmprestimo = Calendar.getInstance();
     
     @NotNull(message = "Os livros do empréstimo devem ser informados!")
     @OneToMany(mappedBy = "emprestimo")
@@ -57,14 +60,6 @@ public class Emprestimo implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Calendar getData() {
-        return data;
-    }
-
-    public void setData(Calendar data) {
-        this.data = data;
     }
 
     public Cliente getCliente() {
@@ -99,5 +94,21 @@ public class Emprestimo implements Serializable{
         }
         return true;
     }
+
+    public Calendar getDtCadastro() {
+        return dtEmprestimo;
+    }
+
+    public void setDtCadastro(Calendar dtCadastro) {
+        this.dtEmprestimo = dtCadastro;
+    }
+
+    public List<LivroEmprestimo> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(List<LivroEmprestimo> livros) {
+        this.livros = livros;
+    }
   
-}
+} 
