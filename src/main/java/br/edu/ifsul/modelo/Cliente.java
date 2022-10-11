@@ -43,8 +43,8 @@ public class Cliente {
     @Column(name = "telefone", nullable = false, length = 11)
     private String telefone;
     
-    @NotBlank(message = "O e-mail deve ser informado!") // restrição para rejeitar campo em branco
-    @Length(max = 80, message = "O e-mail não pode ter mais que {max} caracteres!") // restrição para tamanho
+    @NotBlank(message = "O e-mail deve ser informado!")
+    @Length(max = 80, message = "O e-mail não pode ter mais que {max} caracteres!")
     @Column(name = "email", nullable = false, length = 80)
     private String email;
     

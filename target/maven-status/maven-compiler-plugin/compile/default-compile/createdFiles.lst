@@ -1,11 +1,11 @@
 br\edu\ifsul\testes\TestePersistirCliente.class
-br\edu\ifsul\modelo\LivroEmprestimo.class
 br\edu\ifsul\modelo\Emprestimo.class
 br\edu\ifsul\modelo\Livro.class
+br\edu\ifsul\modelo\Categoria.class
+br\edu\ifsul\testes\TestePersistirAutor.class
+br\edu\ifsul\modelo\LivroEmprestimo.class
 br\edu\ifsul\testes\TestePersistirLivro.class
 br\edu\ifsul\modelo\Cliente.class
-br\edu\ifsul\modelo\Categoria.class
 br\edu\ifsul\modelo\Autor.class
-br\edu\ifsul\testes\TestePersistirAutor.class
 br\edu\ifsul\testes\TestePersistirCategoria.class
 br\edu\ifsul\testes\TestePersistirEmprestimo.class
